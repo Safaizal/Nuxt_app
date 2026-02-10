@@ -5,7 +5,7 @@ export default {
     extend: {
     },
     fontfamily: {
-      "monospace": ["monospace"],
+      Mostserrat: ["Montserrat", "sans-serif"],
     },
     container: {
       center: true,

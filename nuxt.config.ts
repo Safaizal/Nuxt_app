@@ -16,9 +16,7 @@ export default defineNuxtConfig({
 
   googleFonts:{
     families: {
-      "monospace": true,
-      "sans-serif": true,
-      "serif": true,
+      Montserrat: true,
     },
   },
 })
