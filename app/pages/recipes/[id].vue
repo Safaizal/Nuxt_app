@@ -5,13 +5,20 @@ const { id } = useRoute().params; // we can directly destructure it like this al
 
 const { data, error } = await useFetch<Recipe>(`https://dummyjson.com/recipes/${id}`);
 
+if (error.value) {
+    throw createError({
+        statusCode: error.value?.statusCode,
+        statusMessage: error.value?.statusMessage,
+    })
+} // this will throw the error, when we are accessing the page which is not available.
+
 </script>
 
 <template>
   <div class="flex flex-col max-w-screen-lg container py-20">
     <!-- Header -->
     <div class="flex flex-col mb-6">
-      <h2 class="text-5xl mb-4 font-semibold">{{ data?.name }}</h2>
+      <h2 class="text-5xl mb-4 font-semibold Pixellari">{{ data?.name }}</h2>
       <div class="flex gap-4 text-xl mb-6">
         <div class="flex items-center gap-1">
           <Icon name="i-mdi-clock-time-eight-outline" class="text-red-500" />
