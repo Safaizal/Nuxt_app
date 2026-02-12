@@ -14,6 +14,10 @@ export default defineNuxtConfig({
     '@nuxt/image'
   ],
 
+  image:{
+    domains: ['https://dummyjson.com/recipes'],
+  },
+
   googleFonts:{
     families: {
       Montserrat: true,

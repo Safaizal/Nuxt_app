@@ -45,12 +45,15 @@ definePageMeta({
                             <p class="text-xl lg:text-2xl font-semibold mb-2">{{ recipe.name }}</p>
                             <div class="font-normal w-full bg-white/80 flex gap-8 text-lg lg:text-xl mb-4 mt-auto">
                                 <div class="flex items-center gap-1">
+                                    <Icon name="fxemoji:fire" class="w-5 h-5 text-black" />
                                     <span>{{ recipe.cookTimeMinutes }}</span>
                                 </div>
                                 <div class="flex items-center gap-1">
+                                    <Icon name="fxemoji:fire" class="w-5 h-5 text-black" />
                                     <span>{{ recipe.caloriesPerServing }}</span>
                                 </div>
                                 <div class="flex items-center gap-1">
+                                    <Icon name="fxemoji:star" class="w-5 h-5 text-black" />
                                     <span>{{ recipe.rating }} ({{ recipe.reviewCount }})</span>
                                 </div>
                             </div>
