@@ -22,4 +22,6 @@ export interface Recipe {
     rating:             number;
     reviewCount:        number;
     mealType:           string[];
-}
+} 
+
+// we can get this structure from the payloads in the nuxt app's dev tools

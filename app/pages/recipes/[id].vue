@@ -12,6 +12,19 @@ if (error.value) {
     })
 } // this will throw the error, when we are accessing the page which is not available.
 
+useSeoMeta({
+  title: data.value?.name,
+  description: 'Recipes to cook delicious food',
+  ogTitle: data.value?.name,
+  ogDescription: 'Recipes to cook delicious food',
+  ogImage: data.value?.image,
+  ogUrl: `https://recipe-app.com/recipes/${data.value?.id}`,
+  twitterTitle: data.value?.name,
+  twitterDescription: 'Recipes to cook delicious food',
+  twitterImage: data.value?.image,
+  twitterCard: 'summary'
+})
+
 </script>
 
 <template>
