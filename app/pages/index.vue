@@ -57,7 +57,7 @@ definePageMeta({
                                     <span>{{ recipe.rating }} ({{ recipe.reviewCount }})</span>
                                 </div>
                             </div>
-                            <button class="bg-red-800 text-white px-6 py-3 rounded-lg hover:bg-red-900 transition-colors" @click="() => navigateTo(`/recipes/${recipe.id}`)">View</button>
+                            <NuxtLink :to="`/recipes/${recipe.id}`" class="bg-red-800 text-white px-6 py-3 rounded-lg hover:bg-red-900 transition-colors">View</NuxtLink>
                         </div>
                     </div>
                 </div>
