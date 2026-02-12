@@ -1,6 +1,15 @@
 <script setup lang="ts">
+import { type RecipeResponse } from '~~/types/types';
+
+// const {data, error} = useAsyncData("recipes", () => 
+// $fetch("https://dummyjson.com/recipes?limit=12")
+// );
+
+const { data, error } = await useFetch<RecipeResponse>("https://dummyjson.com/recipes?limit=12");
+
 definePageMeta({
     layout: "default"
+
 })
 </script>
 <template>
@@ -14,13 +23,43 @@ definePageMeta({
                     <p class="text-xl lg:text-2xl mb-8 text-balance">
                         Discover recipes helping you to find the easiest way to cook.
                     </p>
-                    <button class="bg-red-800 text-white px-6 py-3 rounded-lg hover:bg-red-900 transition-colors">Browse Recipes</button>
+                    <button class="bg-red-800 text-white px-6 py-3 rounded-lg hover:bg-red-900 transition-colors">Browse
+                        Recipes</button>
                 </div>
                 <div class="flex-1 order-1 lg:order-2">
                     <NuxtImg sizes="xs:100vw sm:667px" src="/nuxt-course-hero.png" format="webp" densities="x1"
                         alt="" />
+                    <!-- NuxtImg has the format feature which very useful for optimizing images, where it can reduse the size of the image and that helps to run website faster and many other features are also there. -->
                 </div>
             </div>
+        </section>
+        <section id="recipes" class="py-20 container">
+            <h2 class="text-3xl lg:text-5xl mb-2">Discover, Create, Share</h2>
+            <p class="text-lg lg:text-xl mb-8">Check out our most popular recipes!</p>
+            <div v-if="!error" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8">
+                <div v-for="recipe in data?.recipes" :recipe="recipe">
+                    <div class="flex flex-col shadow rounded-md">
+                        <NuxtImg :src="recipe.image" sizes="xs:100vw sm:50vw lg:400px" format="webp" densities="x1"
+                            alt="" class="rounded-t-md" />
+                        <div class="flex flex-col py-6 px-4 flex-1">
+                            <p class="text-xl lg:text-2xl font-semibold mb-2">{{ recipe.name }}</p>
+                            <div class="font-normal w-full bg-white/80 flex gap-8 text-lg lg:text-xl mb-4 mt-auto">
+                                <div class="flex items-center gap-1">
+                                    <span>{{ recipe.cookTimeMinutes }}</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <span>{{ recipe.caloriesPerServing }}</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <span>{{ recipe.rating }} ({{ recipe.reviewCount }})</span>
+                                </div>
+                            </div>
+                            <button class="bg-red-800 text-white px-6 py-3 rounded-lg hover:bg-red-900 transition-colors" @click="() => navigateTo(`/recipes/${recipe.id}`)">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p v-else class="text-xl">Opps, something went wrong. Please try again later</p>
         </section>
     </main>
 </template>
